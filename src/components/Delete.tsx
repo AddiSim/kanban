@@ -11,21 +11,17 @@ export function Delete({ token }: { token: string }) {
     const [selectedProject, setSelectedProject] = useState<string>('');
 
     const fetchData = useCallback(async (url: string, setter: (data: any[]) => void, page: number = 1, data: any[] = []) => {
-        try {
-            const response = await fetch(`${url}?page=${page}`, {
-                headers: { 'Authorization': `Bearer ${token}` }
-            });
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+        const response = await fetch(`${url}?page=${page}`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
             }
-            const responseData = await response.json();
-            if (responseData.message === "Engar niðurstöður" || responseData.length === 0) {
-                setter(data);
-            } else {
-                fetchData(url, setter, page + 1, [...data, ...responseData]);
-            }
-        } catch (error: any) {
-            console.error("Fetch error:", error.message);
+        });
+        const responseData = await response.json();
+
+        if (responseData.message === "Engar niðurstöður" || responseData.length === 0) {
+            setter(data);
+        } else {
+            fetchData(url, setter, page + 1, [...data, ...responseData]);
         }
     }, [token]);
 
