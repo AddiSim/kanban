@@ -7,7 +7,6 @@ export function UsersComponent({ token }: { token: string }) {
 
 	const [usersPage, setUsersPage] = useState(1);
 	const [users, setUsers] = useState<notandi[] | undefined>();
-	const [totalUsers, setTotalUsers] = useState(0);
 	const [isHydrated, setIsHydrated] = useState(false);
 
 	const handleLoadPrevious = () => {
