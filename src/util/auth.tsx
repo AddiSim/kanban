@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function auth(token: string, path = '/api/authenticate') {
 	const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+	console.log(apiUrl);
 	const response = await fetch(`${apiUrl}${path}`, {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
