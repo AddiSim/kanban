@@ -65,7 +65,7 @@ export default function User({ id, token }: UserType) {
 	const handleUpdateProjectStatus = (projectId: string, status: string) => {
 		const projectData = { status };
 
-		fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects/${projectId}`, {
+		fetch(`${process.env.NEXT_PUBLIC_API_URL}projects/${projectId}`, {
 			method: 'PATCH',
 			headers: {
 				'Content-Type': 'application/json',
