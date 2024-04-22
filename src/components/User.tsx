@@ -62,22 +62,32 @@ export default function User({ id, token }: UserType) {
 		}
 	}, [fetchProjects, group]);
 
-	const handleUpdateProjectStatus = (projectId: string, status: string) => {
-		const projectData = { status };
-
-		fetch(`${process.env.NEXT_PUBLIC_API_URL}projects/${projectId}`, {
-			method: 'PATCH',
-			headers: {
-				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
-			},
-			body: JSON.stringify(projectData),
-		})
-			.then(response => response.json())
-			.then((data: Project) => {
-				setRefreshProjects(prev => !prev);
-			});
+	const handleUpdateProjectStatus = (projectId: string, newStatus: string) => {
+	    const projectData = { status: newStatus };
+	
+	    fetch(`${process.env.NEXT_PUBLIC_API_URL}projects/${projectId}`, {
+	        method: 'PATCH',
+	        headers: {
+	            'Content-Type': 'application/json',
+	            'Authorization': `Bearer ${token}`
+	        },
+	        body: JSON.stringify(projectData),
+	    })
+	    .then(response => response.json())
+	    .then((updatedProject: Project) => {
+	        // Update the projects state with the new status
+	        setProjects(currentProjects => {
+	            return currentProjects.map(project => {
+	                if (project.id === projectId) {
+	                    // Spread the project to create a new object with updated status
+	                    return { ...project, status: newStatus };
+	                }
+	                return project;
+	            });
+	        });
+	    });
 	}
+
 
 	const statuses = ['0', '1', '2', '3', '4', '5'];
 
