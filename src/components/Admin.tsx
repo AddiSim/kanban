@@ -20,7 +20,7 @@ export function UsersComponent({ token }: { token: string }) {
 
 	const fetchData = useCallback(async () => {
 		if (token !== undefined) {
-			const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users?page=${usersPage}`,
+			const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}users?page=${usersPage}`,
 				{
 					method: 'GET',
 					headers: {
@@ -85,7 +85,7 @@ export function GroupsComponent({ token }: { token: string }) {
 
 	const fetchData = useCallback(async () => {
 		if (token !== undefined) {
-			const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/groups?page=${groupsPage}`,
+			const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}groups?page=${groupsPage}`,
 				{
 					method: 'GET',
 					headers: {
@@ -139,7 +139,7 @@ export function ProjectsComponent({ token }: { token: string }) {
 
 	const fetchData = useCallback(async () => {
 		if (token !== undefined) {
-			const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects?page=${projectsPage}`,
+			const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}projects?page=${projectsPage}`,
 				{
 					method: 'GET',
 					headers: {

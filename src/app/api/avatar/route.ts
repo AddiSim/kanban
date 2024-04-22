@@ -1,6 +1,5 @@
 // Þetta er skítuf lausn ef þú getur lagað hóp 1 væri það betra, pushin mín á git fara ekki yfir á url
 import cloudinary from 'cloudinary';
-import { VercelRequest, VercelResponse } from '@vercel/node';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest, res: NextResponse) {

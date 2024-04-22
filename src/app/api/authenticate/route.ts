@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
  */
 export async function POST(req: NextRequest) {
 	const { token } = await req.json()
-	const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/groups`,
+	const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}groups`,
 		{
 			method: 'POST',
 			headers: {
