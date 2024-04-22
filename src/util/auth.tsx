@@ -1,5 +1,3 @@
-import { NextResponse } from "next/server";
-
 export async function auth(token: string, path = 'authenticate') {
 	const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 	console.log("Making request to:", apiUrl + path);
@@ -14,7 +12,7 @@ export async function auth(token: string, path = 'authenticate') {
 
 	console.log("Response status:", response.status);
 	if (response.ok) {
-		const data = await response.json() as { login?: boolean, isAdmin?: boolean, message?: string };
+		const data = await response.json() as { login?: boolean, admin?: boolean, message?: string };
 		console.log("Response data:", data);
 		return data;
 	} else {
