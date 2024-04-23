@@ -75,11 +75,9 @@ export default function User({ id, token }: UserType) {
 	    })
 	    .then(response => response.json())
 	    .then((updatedProject: Project) => {
-	        // Update the projects state with the new status
 	        setProjects(currentProjects => {
 	            return currentProjects.map(project => {
 	                if (project.id === projectId) {
-	                    // Spread the project to create a new object with updated status
 	                    return { ...project, status: newStatus };
 	                }
 	                return project;
